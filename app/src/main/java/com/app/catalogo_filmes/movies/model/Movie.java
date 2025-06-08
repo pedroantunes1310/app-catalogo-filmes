@@ -1,5 +1,7 @@
 package com.app.catalogo_filmes.movies.model;
 
+import com.google.firebase.Timestamp;
+
 import java.time.OffsetDateTime;
 import java.util.Date;
 
@@ -11,10 +13,10 @@ public class Movie {
     private String status;
     private String comment;
     private float rating;
-    private OffsetDateTime lastModified;
-    private OffsetDateTime createdAt;
+    private Timestamp lastModified;
+    private Timestamp createdAt;
 
-    public Movie(String id, String title, String description, String status, String comment, float rating, OffsetDateTime lastModified, OffsetDateTime createdAt) {
+    public Movie(String id, String title, String description, String status, String comment, float rating, Timestamp lastModified, Timestamp createdAt) {
         this.id = id;
         this.title = title;
         this.description = description;
@@ -73,19 +75,19 @@ public class Movie {
         this.rating = rating;
     }
 
-    public OffsetDateTime getLastModified() {
+    public Timestamp getLastModified() {
         return lastModified;
     }
 
-    public void setLastModified(OffsetDateTime lastModified) {
+    public void setLastModified(Timestamp lastModified) {
         this.lastModified = lastModified;
     }
 
-    public OffsetDateTime getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(OffsetDateTime createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
 }
