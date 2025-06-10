@@ -21,6 +21,7 @@ public class AuthRepository {
                 .addOnCompleteListener(task -> {
                     if (task.isSuccessful()) {
                         callback.onSuccess(firebaseAuth.getCurrentUser());
+
                     }
                     else {
                         callback.onFailure(task.getException());

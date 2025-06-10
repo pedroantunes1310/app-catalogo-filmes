@@ -13,6 +13,7 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.app.catalogo_filmes.auth.repository.AuthRepository;
 import com.app.catalogo_filmes.auth.ui.AuthActivity;
+import com.app.catalogo_filmes.movies.ui.MoviesListActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private TextView textWelcome;
     private Button buttonLogout;
+    private Button buttonMovies;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
 
         textWelcome = findViewById(R.id.textWelcome);
         buttonLogout = findViewById(R.id.buttonLogout);
+        buttonMovies = findViewById(R.id.buttonMovies);
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
@@ -48,6 +51,10 @@ public class MainActivity extends AppCompatActivity {
             new AuthRepository().signOut();
             startActivity(new Intent(MainActivity.this, AuthActivity.class));
             finish();
+        });
+
+        buttonMovies.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, MoviesListActivity.class));
         });
     }
 }

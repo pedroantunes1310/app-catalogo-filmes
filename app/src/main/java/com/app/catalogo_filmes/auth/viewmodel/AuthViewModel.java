@@ -40,13 +40,14 @@ public class AuthViewModel extends ViewModel {
 
             @Override
             public void onFailure(Exception e) {
-                errorLiveData.setValue(e.getMessage());
+                errorLiveData.setValue("Falha no login, credenciais incorretas ou inexistentes: " + e.getMessage());
             }
         });
     }
 
     public void signUp(String email, String password) {
-        authRepository.signUp(email, password, new AuthRepository.AuthCallback() {
+
+            authRepository.signUp(email, password, new AuthRepository.AuthCallback() {
             @Override
             public void onSuccess(FirebaseUser firebaseUser) {
                 User user = new User(firebaseUser.getUid(), firebaseUser.getEmail());
@@ -59,7 +60,15 @@ public class AuthViewModel extends ViewModel {
 
                     @Override
                     public void onFailure(Exception e) {
-                        errorLiveData.setValue("Falha ao salvar dados do usuário: " + e.getMessage());
+                        firebaseUser.delete()
+                                        .addOnCompleteListener(task -> {
+                                            if(task.isSuccessful()){
+                                                errorLiveData.setValue("Falha ao salvar dados do usuário: " + e.getMessage());
+                                            }
+                                            else{
+                                                errorLiveData.setValue("Falha ao autenticar e salvar dados: " + e.getMessage());
+                                            }
+                                        });
                     }
                 });
             }

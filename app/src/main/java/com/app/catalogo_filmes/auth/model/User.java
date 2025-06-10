@@ -9,6 +9,8 @@ public class User {
     private String email;
     private Timestamp createdAt;
 
+    public User() {}
+
     public User(String id, String email) {
         this.id = id;
         this.email = email;

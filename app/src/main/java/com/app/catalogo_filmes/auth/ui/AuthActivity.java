@@ -1,5 +1,6 @@
 package com.app.catalogo_filmes.auth.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.widget.Button;
@@ -13,8 +14,10 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.lifecycle.ViewModelProvider;
 
+import com.app.catalogo_filmes.MainActivity;
 import com.app.catalogo_filmes.R;
 import com.app.catalogo_filmes.auth.viewmodel.AuthViewModel;
+import com.app.catalogo_filmes.movies.ui.MoviesListActivity;
 
 public class AuthActivity extends AppCompatActivity {
 
